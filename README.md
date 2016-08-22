@@ -1,0 +1,2 @@
+# QuickCMD
+Another QuickSilver Clon
