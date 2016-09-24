@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-21 22:27:07
-* @Last Modified time: 2016-08-22 17:58:48
+* @Last Modified time: 2016-09-10 19:51:59
 */
 
 'use strict';
@@ -63,8 +63,9 @@ class MainInput {
 		this._list.hide();
 		var winSize = currentWindow.getSize();
 		// var h = parseInt( this._$element.parent().outerHeight() );
-		var h = parseInt( $('.row.main').outerHeight() );
+		var h = parseInt( $('#main').outerHeight() );
 		h = h < MIN_HEIGHT ? MIN_HEIGHT : h;
+		console.log('new height',h);
 		currentWindow.setSize(winSize[0], h);
 		this._list.setBaseHeight(h);
 	}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QuickCMD</title>
+		<script type="text/javascript">require('RendererBootstrap.js').bootstrap(window);</script>
+
+
+
+		<script type="text/javascript" src="../../../node_modules/json-form/deps/jquery.min.js"></script>
+		<script type="text/javascript" src="../../../node_modules/json-form/deps/underscore.js"></script>
+
+		<script type="text/javascript" src="../../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../../../gui/css/bootstrap.slate.css">
+
+
+
+		<script type="text/javascript" src="../../../node_modules/json-form/deps/opt/bootstrap-dropdown.js"></script>
+
+		<script type="text/javascript" src="../../../node_modules/json-form/lib/jsonform.js"></script>
+
+	</head>
+	<body>
+		<div id="container">
+			<div class="dg-row main">
+				<div class="forms">
+					<ul class="nav nav-pills nav-stacked">
+						<li role="presentation" class="active"><a href="#Plugins">Plugins Handler</a></li>
+						<li role="presentation"><a href="#Catalog">Catalog</a></li>
+						<li role="presentation"><a href="#a">Something Else</a></li>
+					</ul>
+				</div>
+				<div class="workarea">
+					<form></form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// window.onloaded = () => {
+			$(document).ready(function() {
+
+				JSONForm.fieldTypes.directory = {
+					fieldtemplate: true,
+					inputfield: true,
+					template: `<input class="input-file" id="<%= id %>" name="<%= node.name %>" type="file" <%= (node.schemaElement && node.schemaElement.required ? " required='required'" : "") %> webkitdirectory/>`
+				};
+
+				$('form').jsonForm({
+				  "schema": {
+				  	"friends": {
+				      "type": "array",
+				      "items": {
+				        "type": "object",
+				        "title": "Friend",
+
+				        "properties": {
+				          "path": {
+				            "type": "string",
+				            "title": "Path",
+				            "default": "/"
+				          },
+				          "extensions": {
+				            "type": "array",
+				            "items": {
+				              "type": "string",
+				              "title": "Extension",
+				              "default": "*.exe"
+				            }
+				          }
+				        }
+				      }
+				    }
+				  },
+				  "form": [
+				    {
+				      // "type": "array",
+				      "type": "tabarray",
+				      "items": {
+				        "type": "section",
+				        "legend": "{{value}}",
+				        "items": [
+				          {
+				            "key": "friends[].path",
+				            "type": "directory",
+				            "valueInLegend": true
+				          },
+				          {
+				            "type": "array",
+				            "items": [
+				              "friends[].extensions[]"
+				            ]
+				          }
+				        ]
+				      }
+				    }
+				  ],
+					onSubmit: (err, val) => {
+						console.log('submit',arguments);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

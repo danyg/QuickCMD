@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-21 23:40:37
-* @Last Modified time: 2016-08-22 17:58:43
+* @Last Modified time: 2016-09-10 19:49:48
 */
 
 'use strict';
@@ -92,6 +92,9 @@ class MainList {
 				} else {
 					break;
 				}
+			}
+			if(winSize[1] < 32 ) {
+				winSize[1] = 32;
 			}
 
 			currentWindow.setSize(winSize[0], winSize[1],true);

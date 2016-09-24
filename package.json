@@ -1,7 +1,7 @@
 {
-  "name": "quickcmd",
-  "productName": "Quickcmd",
-  "version": "0.0.0",
+  "name": "QuickCMD",
+  "productName": "QuickCMD",
+  "version": "0.0.1",
   "description": "My breathtaking app",
   "license": "MIT",
   "repository": "danyg/quickcmd",
@@ -12,9 +12,9 @@
   },
   "scripts": {
     "test": "xo && node spec/runJasmine.js",
-    "testDebug": "node-debug --debug-brk node_modules/jasmine/bin/jasmine.js",
+    "testDebug": "node-debug --debug-brk spec/runJasmine.js",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
+    "build": "electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --platform=win32 --arch=x64 --version-string.ProductName=\"QuickCMD\""
   },
   "files": [
     "index.js",
@@ -26,11 +26,12 @@
     "electron"
   ],
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "electron-debug": "^1.0.0",
     "jquery": "^3.1.0",
-    "modulesloader": "^0.4.2",
-    "nedb": "^1.8.0",
-    "requirejs": "^2.2.0"
+    "json-form": "git+https://github.com/joshfire/jsonform.git#master",
+    "modulesloader": "0.5.1",
+    "nedb": "^1.8.0"
   },
   "devDependencies": {
     "devtron": "^1.1.0",

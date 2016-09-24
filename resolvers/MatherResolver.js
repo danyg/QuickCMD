@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-22 02:46:14
-* @Last Modified time: 2016-08-22 14:46:20
+* @Last Modified time: 2016-09-10 19:53:19
 */
 /*jshint evil: true */
 'use strict';
@@ -18,7 +18,7 @@ class Mather extends QuickCMDPlugin {
 	find(data) {
 		return new Promise((resolve) => {
 			var result = [];
-			if(data.match(/^[\d\+\-\*\/\(\)\^&|epi]*$/)) {
+			if(data.match(/^[\.\d\+\-\*\/\(\)\^&|epi]*$/)) {
 				try {
 					(function(){
 						var r,
@@ -34,7 +34,7 @@ class Mather extends QuickCMDPlugin {
 								'Mather',
 								'math',
 								data,
-								r.toString()
+								data + ' = [' + r.toString() + ']'
 							));
 						}
 					})();

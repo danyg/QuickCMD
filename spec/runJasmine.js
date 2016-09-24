@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-21 19:57:08
-* @Last Modified time: 2016-08-21 21:45:27
+* @Last Modified time: 2016-08-22 19:19:42
 */
 
 'use strict';
@@ -115,7 +115,6 @@ MyConsoleReporter.prototype.printQueue = function() {
 
 
 util.inherits(MyConsoleReporter, ConsoleReporter);
-
 
 var customReporter = new MyConsoleReporter({
 	showColors: true,

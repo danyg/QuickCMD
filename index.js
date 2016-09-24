@@ -1,7 +1,6 @@
 'use strict';
 
 require('modulesLoader');
-
 include('module!mainWindow');
 
 /*

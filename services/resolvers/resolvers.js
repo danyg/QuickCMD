@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-22 02:44:40
-* @Last Modified time: 2016-08-22 16:26:40
+* @Last Modified time: 2016-08-24 03:42:02
 */
 
 'use strict';
@@ -12,12 +12,17 @@ const {ipcMain} = require('electron');
 
 require('modulesLoader');
 
-const Mather = include('service!Mather'),
-	Indexer = include('service!Indexer'),
-	GoogleSearcher = include('service!GoogleSearcher'),
-	URLOpener = include('service!URLOpener')
-;
+const ResolverStrategy = include('service!ResolverStrategy');
 
+include.registerStrategy(ResolverStrategy);
+
+var types = {};
+var resolvers = include('resolvers!');
+Object.keys(resolvers).forEach(function(type) {
+	types[type] = new resolvers[type]();
+});
+
+/*
 const types = {
 	Mather: new Mather(),
 	Indexer: new Indexer(),
@@ -25,6 +30,8 @@ const types = {
 	URLOpener: new URLOpener()
 };
 
+console.log(include('resolvers!'));
+*/
 function promiseAllAlways (promises) {
 	var mP = [],
 		okValues = [],

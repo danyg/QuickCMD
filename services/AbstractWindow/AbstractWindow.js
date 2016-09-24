@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-19 22:36:23
-* @Last Modified time: 2016-08-20 16:40:37
+* @Last Modified time: 2016-08-24 18:16:17
 */
 
 'use strict';
@@ -25,8 +25,7 @@ class AbstractWindow {
 				{},
 				{
 					width: 640,
-					height: 480,
-					show: false
+					height: 480
 				},
 				this._winOpts
 			);
@@ -34,7 +33,7 @@ class AbstractWindow {
 			this._win = new electron.BrowserWindow(opts);
 
 			const mName = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.substring(1);
-			this.templatePath = include.getBasePath() + '/' + include.resolve('template!' + mName,1) + '.html';
+			this.templatePath = include.getBasePath() + '/' + include.resolve('template!' + mName,1);
 			this.modulePath = path.resolve(path.dirname(this.templatePath) + '/..');
 			var context = JSON.stringify({
 				moduleName: mName,

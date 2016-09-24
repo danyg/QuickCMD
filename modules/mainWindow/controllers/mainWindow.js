@@ -3,7 +3,7 @@
 *
 * @Author: Daniel Goberitz
 * @Date:               2016-08-19 22:42:02
-* @Last Modified time: 2016-08-22 17:37:25
+* @Last Modified time: 2016-08-24 18:16:25
 */
 'use strict';
 
@@ -12,11 +12,12 @@ require('modulesLoader');
 const AbstractWindow = include('service!AbstractWindow');
 const {app, globalShortcut, ipcMain, clipboard, shell} = require('electron');
 
-include('service!searcherResponsers');
+include('service!resolvers');
+
+const ConfigWindow = include('module!configWindow');
 
 class MainWindow extends AbstractWindow{
 	_init() {
-		// this._indexer = new Indexer();
 		// prevent to create the window on creation
 		// mainWindow should wait for app to be ready
 	}
@@ -25,7 +26,8 @@ class MainWindow extends AbstractWindow{
 			width: 400,
 			height: 30,
 			frame: false,
-			transparent: true
+			transparent: true,
+			show: false
 		};
 		super._init();
 
@@ -36,6 +38,9 @@ class MainWindow extends AbstractWindow{
 		this._win.on('blur', () => {
 			this._win.webContents.send('blur');
 		});
+console.log('new configWindow')
+		var w = new ConfigWindow();
+console.log('configWindow? ', w)
 
 		// ipcMain.on('execute', (event, data) => {
 		// 	console.log('execute', data);
