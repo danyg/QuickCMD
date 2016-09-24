@@ -1,3 +1,0 @@
-# QuickCMD
-Another QuickSilver Clon
-
